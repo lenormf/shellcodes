@@ -11,7 +11,7 @@ function fatal {
 
 function main {
 	for i in "$@"; do
-		objdump -dMintel -j .text "${i}" | sed -r "s/\s+[a-z0-9]+:\s+//i; s/[a-z0-9]+\s+<\w+>://ig" | egrep "00\s+.+"
+		objdump -dMintel -j .text "${i}" | sed -r "s/\s+[a-z0-9]+:\s+//i; s/[a-z0-9]+\s+<\w+>://ig" | egrep "00\s+"
 	done
 }
 
