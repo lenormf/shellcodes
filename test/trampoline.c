@@ -4,7 +4,7 @@
  */
 
 #include <stddef.h>
-#include <strings.h>
+#include <string.h>
 #include <sys/mman.h>
 
 char const shellcode[] = {
