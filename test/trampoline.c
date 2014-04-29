@@ -3,6 +3,7 @@
  * by lenormf
  */
 
+#include <stdio.h>
 #include <stddef.h>
 #include <string.h>
 #include <sys/mman.h>
@@ -21,6 +22,9 @@ int main(void) {
 
 	/* Copy the payload over to the buffer */
 	memcpy(f, shellcode, sizeof(shellcode));
+
+	/* Print the size of the shellcode */
+	printf("Shellcode size: %lu\n", sizeof(shellcode));
 
 	/* Execute the shellcode */
 	f();
