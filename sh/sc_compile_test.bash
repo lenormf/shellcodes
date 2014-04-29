@@ -28,6 +28,7 @@ function main {
 
 		cp "${SC_FILE_TEST_TRAMPOLINE}" "${file_test_source}" || fatal "Unable to create source file"
 		sed -i "s/#include \"shellcode.h\"/${shellcode//\\/\\\\}/g" "${file_test_source}" || fatal "Unable to inject shellcode into the source file"
+		sed -i "s/\" \"/\"\n\t\"/g; s/^\"/\t\"/" "${file_test_source}"
 
 		gcc ${SC_OPTIONS_GCC} -o "${file_test_binary}" "${file_test_source}" || fatal "Unable to generate test"
 
