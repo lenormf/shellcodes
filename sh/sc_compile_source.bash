@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 ##
-## try_shellcode.bash for shellcodes
+## sc_compile_source.bash for shellcodes
 ## by lenormf
 ##
 
@@ -18,9 +18,9 @@ function main {
 
 		test -z "${obj}" -o -z "${out}" && fatal "Unable to create temporary objects"
 
-		nasm "${SC_OPTIONS_NASM}" -o "${obj}" "$i" || fatal "Unable to generate object"
+		nasm ${SC_OPTIONS_NASM} -o "${obj}" "$i" || fatal "Unable to generate object"
 
-		ld "${SC_OPTIONS_LD}" -o "${out}" "${obj}" || fatal "Unable to link objects"
+		ld ${SC_OPTIONS_LD} -o "${out}" "${obj}" || fatal "Unable to link objects"
 
 		rm -f "${obj}"
 

@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 ##
-## shellcode_from_section.bash for shellcodes
+## sc_get_c_shellcode for shellcodes
 ## by lenormf
 ##
 
