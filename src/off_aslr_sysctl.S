@@ -1,3 +1,7 @@
+;;
+;; off_aslr_sysctl.S for shellcodes
+;; by lenormf
+;;
 
 bits 64
 
