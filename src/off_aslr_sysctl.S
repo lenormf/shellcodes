@@ -10,7 +10,6 @@ global _start
 _start:
 	;; execve("/sbin/sysctl", ["/sbin/sysctl", "kernel.randomize_va_space=0", 0], 0)
 	xor rdx, rdx
-	push rdx
 
 	push DWORD 0x01303d65
 	mov BYTE [rsp + 3], dl
